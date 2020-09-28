@@ -22,7 +22,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./src --ext .js,.jsx",
     "lint:fix": "eslint ./src --ext .js,.jsx --fix",
-    "deploy": "yarn build && gh-pages -d build"
+    "deploy": "yarn build && gh-pages -d build",
+    "deployremote" : "yarn build && gh-pages -d build --repo git@github.com:MerinoWize/video-deck-page.git"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^18.2.0",
