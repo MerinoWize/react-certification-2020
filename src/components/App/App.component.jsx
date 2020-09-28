@@ -1,6 +1,5 @@
 import React, { useLayoutEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import dotenv from 'dotenv';
 
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
@@ -13,7 +12,6 @@ import Layout from '../Layout';
 import { random } from '../../utils/fns';
 
 const App = () => {
-  dotenv.config();
   useLayoutEffect(() => {
     const { body } = document;
 
