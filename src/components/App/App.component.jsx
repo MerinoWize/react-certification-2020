@@ -1,5 +1,6 @@
 import React, { useLayoutEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import dotenv from 'dotenv';
 
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
@@ -7,19 +8,20 @@ import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
 import Private from '../Private';
-import Fortune from '../Fortune';
+// import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
 
-function App() {
+const App = () => {
+  dotenv.config();
   useLayoutEffect(() => {
     const { body } = document;
 
-    function rotateBackground() {
+    const rotateBackground = () => {
       const xPercent = random(100);
       const yPercent = random(100);
       body.style.setProperty('--bg-position', `${xPercent}% ${yPercent}%`);
-    }
+    };
 
     const intervalId = setInterval(rotateBackground, 3000);
     body.addEventListener('click', rotateBackground);
@@ -48,11 +50,11 @@ function App() {
               <NotFound />
             </Route>
           </Switch>
-          <Fortune />
+          {/* <Fortune /> */}
         </Layout>
       </AuthProvider>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
