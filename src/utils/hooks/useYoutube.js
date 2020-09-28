@@ -6,7 +6,7 @@ const API_URL = `https://www.googleapis.com/youtube/v3/videos`;
 const YOUTUBE_API_KEY = 'AIzaSyAUu9MIWbw2vZy5_p-mBsTF-mPOH1VPHSU';
 
 export const usePopularVids = () => {
-  const [popularVids, setPopularVids] = useState(null);
+  const [popularVids, setPopularVids] = useState([]);
 
   useEffect(() => {
     const findPopularVids = async () => {
