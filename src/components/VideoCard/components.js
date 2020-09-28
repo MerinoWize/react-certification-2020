@@ -4,14 +4,12 @@ export const Card = styled.div`
   border-radius: 3px;
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   background-color: white;
-  height: 250px;
-  width: auto;
+  height: 280px;
+  width: 280px;
 
-  :hover {
-    cursor: pointer;
-    box-shadow: 10px 20px black;
-  }
+  margin: 8px;
 `;
 
 export const CardText = styled.div`
@@ -23,7 +21,14 @@ export const CardText = styled.div`
 `;
 
 export const CardTitle = styled.span`
-  font-size: 18px;
+  font-size: 14px;
   font-family: Arial Black;
   text-overflow: ellipsis;
+`;
+
+export const VideoThumbnail = styled.img`
+  height: auto;
+  width: 100%;
+  border-radius: 3px;
+  margin-bottom: 8px;
 `;

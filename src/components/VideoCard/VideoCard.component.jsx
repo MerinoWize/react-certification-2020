@@ -1,11 +1,12 @@
 import React from 'react';
-import { Card, CardText, CardTitle } from './components';
+import { Card, CardText, CardTitle, VideoThumbnail } from './components';
 
-const VideoCard = () => {
+const VideoCard = ({ videoSnippet }) => {
   return (
     <Card>
       <CardText>
-        <CardTitle> SOME content </CardTitle>
+        <VideoThumbnail src={videoSnippet.thumbnails.high.url} />
+        <CardTitle> {videoSnippet.title} </CardTitle>
       </CardText>
     </Card>
   );
