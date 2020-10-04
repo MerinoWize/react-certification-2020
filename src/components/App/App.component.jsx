@@ -10,6 +10,7 @@ import Private from '../Private';
 // import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
+import Header from '../Header';
 
 const App = () => {
   useLayoutEffect(() => {
@@ -33,6 +34,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <Header />
         <Layout>
           <Switch>
             <Route exact path="/">
