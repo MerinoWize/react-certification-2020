@@ -6,7 +6,7 @@ import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
-import Private from '../Private';
+import PrivateRoute from '../Private';
 // import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
@@ -37,15 +37,15 @@ const App = () => {
         <Header />
         <Layout>
           <Switch>
-            <Route exact path="/">
+            <PrivateRoute exact path="/">
               <HomePage />
-            </Route>
+            </PrivateRoute>
             <Route exact path="/login">
               <LoginPage />
             </Route>
-            <Private exact path="/secret">
+            <PrivateRoute exact path="/secret">
               <SecretPage />
-            </Private>
+            </PrivateRoute>
             <Route path="*">
               <NotFound />
             </Route>
