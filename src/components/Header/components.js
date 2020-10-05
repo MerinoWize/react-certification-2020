@@ -10,6 +10,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const HeaderSection = styled.div`
@@ -19,5 +20,21 @@ export const HeaderSection = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 16px;
+  margin: 0 16px;
+`;
+
+export const HeaderButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b3b3b3;
+  padding: 8px;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+
+  & :hover {
+    cursor: pointer;
+  }
 `;

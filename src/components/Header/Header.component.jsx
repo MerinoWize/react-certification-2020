@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useAuth } from '../../providers/Auth';
-import { HeaderContainer, HeaderSection } from './components';
+import { HeaderContainer, HeaderSection, HeaderButton } from './components';
 
 const Header = () => {
   const history = useHistory();
@@ -15,18 +15,20 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <HeaderSection />
+      <HeaderSection>
+        <HeaderButton>My Whatchlists</HeaderButton>
+      </HeaderSection>
       <HeaderSection>
         <h1>Video Deck</h1>
       </HeaderSection>
       <HeaderSection>
         {authenticated ? (
-          <Link to="/" onClick={deAuthenticate}>
-            <button type="button"> Logout </button>
+          <Link to="/login" onClick={deAuthenticate}>
+            <HeaderButton>Logout</HeaderButton>
           </Link>
         ) : (
           <Link to="/login">
-            <button type="button"> Login </button>
+            <HeaderButton>Login</HeaderButton>
           </Link>
         )}
       </HeaderSection>
