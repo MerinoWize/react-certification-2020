@@ -1,16 +1,17 @@
 import React, { useLayoutEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import PrivateRoute from '../Private';
+import Layout from '../Layout';
+import { random } from '../../utils/fns';
+import Header from '../Header';
+
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
-import PrivateRoute from '../Private';
-// import Fortune from '../Fortune';
-import Layout from '../Layout';
-import { random } from '../../utils/fns';
-import Header from '../Header';
+import VideoPage from '../../pages/VideoPage';
 
 const App = () => {
   useLayoutEffect(() => {
@@ -45,6 +46,9 @@ const App = () => {
             </Route>
             <PrivateRoute exact path="/secret">
               <SecretPage />
+            </PrivateRoute>
+            <PrivateRoute path="/video/:id">
+              <VideoPage />
             </PrivateRoute>
             <Route path="*">
               <NotFound />
