@@ -15,6 +15,7 @@ import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
 import VideoPage from '../../pages/VideoPage';
+import WatchlistPage from '../../pages/WatchlistPage';
 
 const App = () => {
   useLayoutEffect(() => {
@@ -53,6 +54,9 @@ const App = () => {
                 </PrivateRoute>
                 <PrivateRoute path="/video/:id">
                   <VideoPage />
+                </PrivateRoute>
+                <PrivateRoute exact path="/watchlist">
+                  <WatchlistPage />
                 </PrivateRoute>
                 <Route path="*">
                   <NotFound />

@@ -22,7 +22,7 @@ export const Videoframe = styled.iframe`
 `;
 
 export const CardBackground = styled.div`
-  border-radius: 15px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   background-color: white;

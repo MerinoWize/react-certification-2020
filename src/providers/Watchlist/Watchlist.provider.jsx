@@ -14,23 +14,23 @@ const useWatchlist = () => {
 };
 
 const WatchlistProvider = ({ children }) => {
-  const [watchlist, setWatchlist] = useState([{}]);
+  const [watchlist, setWatchlist] = useState([]);
   // [{
   //   id: 'some-id',
   //   title: 'Some Title!',
+  //   data: { videodata },
   // }]
 
   useEffect(() => {
-    const lastWatchlistState = storage.get(WL_STORAGE_KEY);
-    const lasWatchListStateData = JSON.parse(lastWatchlistState);
+    const lastWatchlistState = storage.get(WL_STORAGE_KEY) || [];
 
-    setWatchlist(lasWatchListStateData);
+    setWatchlist(lastWatchlistState);
   }, []);
 
   const addVideo = useCallback(
-    (id, title) => {
+    (id, title, data ) => {
       const newWatchlists = watchlist;
-      newWatchlists.videos.push({ id, title });
+      newWatchlists.push({ id, title, data });
 
       setWatchlist(newWatchlists);
       storage.set(WL_STORAGE_KEY, newWatchlists);

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
-  border-radius: 15px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-self: flex-start;

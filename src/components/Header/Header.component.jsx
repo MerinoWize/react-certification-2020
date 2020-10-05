@@ -21,7 +21,9 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderSection>
-        <HeaderButton>My Whatchlist</HeaderButton>
+        <Link to="/watchlist">
+          <HeaderButton>My Whatchlist</HeaderButton>
+        </Link>
       </HeaderSection>
       <HeaderSection>
         <TitleButton type="button" onClick={goHome}>
