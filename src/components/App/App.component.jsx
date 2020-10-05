@@ -43,20 +43,20 @@ const App = () => {
           <CurrentVideoContext>
             <Layout header={<Header />}>
               <Switch>
-                <PrivateRoute exact path="/">
+                <Route exact path="/">
                   <HomePage />
-                </PrivateRoute>
+                </Route>
                 <Route exact path="/login">
                   <LoginPage />
                 </Route>
-                <PrivateRoute exact path="/secret">
-                  <SecretPage />
-                </PrivateRoute>
-                <PrivateRoute path="/video/:id">
+                <Route exact path="/video/:id">
                   <VideoPage />
-                </PrivateRoute>
+                </Route>
                 <PrivateRoute exact path="/watchlist">
                   <WatchlistPage />
+                </PrivateRoute>
+                <PrivateRoute exact path="/secret">
+                  <SecretPage />
                 </PrivateRoute>
                 <Route path="*">
                   <NotFound />
