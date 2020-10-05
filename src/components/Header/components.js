@@ -38,3 +38,9 @@ export const HeaderButton = styled.div`
     cursor: pointer;
   }
 `;
+
+export const TitleButton = styled.div`
+  & :hover {
+    cursor: pointer;
+  }
+`;

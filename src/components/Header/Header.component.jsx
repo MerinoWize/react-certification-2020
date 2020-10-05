@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useAuth } from '../../providers/Auth';
-import { HeaderContainer, HeaderSection, HeaderButton } from './components';
+import { HeaderContainer, HeaderSection, HeaderButton, TitleButton } from './components';
 
 const Header = () => {
   const history = useHistory();
@@ -13,13 +13,20 @@ const Header = () => {
     history.push('/logout');
   };
 
+  const goHome = (event) => {
+    event.preventDefault();
+    history.push('/');
+  };
+
   return (
     <HeaderContainer>
       <HeaderSection>
-        <HeaderButton>My Whatchlists</HeaderButton>
+        <HeaderButton>My Whatchlist</HeaderButton>
       </HeaderSection>
       <HeaderSection>
-        <h1>Video Deck</h1>
+        <TitleButton type="button" onClick={goHome}>
+          <h1>Video Deck</h1>
+        </TitleButton>
       </HeaderSection>
       <HeaderSection>
         {authenticated ? (
