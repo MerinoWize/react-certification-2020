@@ -18,12 +18,11 @@ export const HeaderSection = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin: 0 16px;
 `;
 
-export const HeaderButton = styled.div`
+export const HeaderButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,14 +32,18 @@ export const HeaderButton = styled.div`
   color: white;
   font-size: 18px;
   text-decoration: none;
+  border: none;
 
-  & :hover {
+  :hover {
     cursor: pointer;
   }
 `;
 
-export const TitleButton = styled.div`
-  & :hover {
+export const TitleButton = styled.button`
+  margin: none;
+  background: none;
+  border: none;
+  :hover {
     cursor: pointer;
   }
 `;

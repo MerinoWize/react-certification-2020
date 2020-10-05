@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const YOUTUBE_API_KEY = 'AIzaSyAUu9MIWbw2vZy5_p-mBsTF-mPOH1VPHSU';
+// const YOUTUBE_API_KEY_V1 = 'AIzaSyAUu9MIWbw2vZy5_p-mBsTF-mPOH1VPHSU';
+const YOUTUBE_API_KEY_V2 = 'AIzaSyDi9ZuwzXhuRAChIGImPHmj_ac79EDBnEA';
+
+const timeout = 30000;
 
 export const usePopularVids = () => {
   const [popularVids, setPopularVids] = useState([]);
@@ -10,19 +13,21 @@ export const usePopularVids = () => {
   useEffect(() => {
     const findPopularVids = async () => {
       try {
-        const response = await axios.get(API_URL, {
-          params: {
-            part: 'snippet',
-            chart: 'mostPopular',
-            regionCode: 'mx',
-            videoCategoryId: '10',
-            key: YOUTUBE_API_KEY,
-          },
-        });
-        const responseJson = await response;
-        const videos = responseJson.data.items;
+        await setTimeout(async () => {
+          const response = await axios.get(API_URL, {
+            params: {
+              part: 'snippet',
+              chart: 'mostPopular',
+              regionCode: 'mx',
+              videoCategoryId: '10',
+              key: YOUTUBE_API_KEY_V2,
+            },
+          });
+          const responseJson = await response;
+          const videos = responseJson.data.items;
 
-        setPopularVids(videos);
+          setPopularVids(videos);
+        }, timeout);
       } catch (error) {
         console.error('YT Error: ', error);
       }
@@ -40,22 +45,24 @@ export const useRelatedVids = (videoId) => {
 
   useEffect(() => {
     const findRelatedVids = async () => {
-      try {
-        const response = await axios.get(API_URL, {
-          params: {
-            part: 'snippet',
-            relatedToVideoId: videoId,
-            type: 'video',
-            key: YOUTUBE_API_KEY,
-          },
-        });
-        const responseJson = await response;
-        const videos = responseJson.data.items;
+      await setTimeout(async () => {
+        try {
+          const response = await axios.get(API_URL, {
+            params: {
+              part: 'snippet',
+              relatedToVideoId: videoId,
+              type: 'video',
+              key: YOUTUBE_API_KEY_V2,
+            },
+          });
+          const responseJson = await response;
+          const videos = responseJson.data.items;
 
-        setRelatedVids(videos);
-      } catch (error) {
-        console.error('YT Error: ', error);
-      }
+          setRelatedVids(videos);
+        } catch (error) {
+          console.error('YT Error: ', error);
+        }
+      }, timeout);
     };
 
     findRelatedVids();
@@ -70,26 +77,28 @@ export const useYoutubeSearch = (searchTerm) => {
 
   useEffect(() => {
     const findRelatedVids = async () => {
-      try {
-        const response = await axios.get(API_URL, {
-          params: {
-            part: 'snippet',
-            maxResults: 5,
-            q: searchTerm,
-            key: YOUTUBE_API_KEY,
-          },
-        });
-        const responseJson = await response;
-        const videos = responseJson.data.items;
+      await setTimeout(async () => {
+        try {
+          const response = await axios.get(API_URL, {
+            params: {
+              part: 'snippet',
+              maxResults: 15,
+              q: searchTerm,
+              key: YOUTUBE_API_KEY_V2,
+            },
+          });
+          const responseJson = await response;
+          const videos = responseJson.data.items;
 
-        setFoundVids(videos);
-      } catch (error) {
-        console.error('YT Error: ', error);
-      }
+          setFoundVids(videos);
+        } catch (error) {
+          console.error('YT Error: ', error);
+        }
+      }, timeout);
     };
 
     findRelatedVids();
   }, [searchTerm, API_URL]);
 
-  return { foudVids };
+  return { foudVids, setFoundVids };
 };

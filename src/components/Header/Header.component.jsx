@@ -21,8 +21,13 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderSection>
-        <Link to="/watchlist">
-          <HeaderButton>My Whatchlist</HeaderButton>
+        {authenticated ? (
+          <Link to="/watchlist">
+            <HeaderButton>My Whatchlist</HeaderButton>
+          </Link>
+        ) : null}
+        <Link to="/search">
+          <HeaderButton>Search</HeaderButton>
         </Link>
       </HeaderSection>
       <HeaderSection>

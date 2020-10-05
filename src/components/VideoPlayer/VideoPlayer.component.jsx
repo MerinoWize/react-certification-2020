@@ -8,8 +8,10 @@ import {
 } from './components';
 import { useCurrentVideo } from '../../providers/CurrentVideo';
 import { useWatchlist } from '../../providers/Watchlist';
+import { useAuth } from '../../providers/Auth';
 
 const VideoPlayer = ({ videoId }) => {
+  const { authenticated } = useAuth();
   const { currentVideo } = useCurrentVideo();
   const { addVideo } = useWatchlist();
   const { snippet } = currentVideo;
@@ -33,9 +35,14 @@ const VideoPlayer = ({ videoId }) => {
         </VideoWindow>
       </VideoContainer>
       <h1>{snippet.title || 'null'}</h1>
-      <AddButton type="button" onClick={handleAddVideoButton}>
-        +
-      </AddButton>
+      {authenticated ? (
+        <div>
+          <AddButton type="button" onClick={handleAddVideoButton}>
+            +
+          </AddButton>
+          Add to Watchlist!
+        </div>
+      ) : null}
     </CardBackground>
   ) : (
     <p> NULL </p>

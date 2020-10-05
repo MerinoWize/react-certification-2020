@@ -16,6 +16,7 @@ import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
 import VideoPage from '../../pages/VideoPage';
 import WatchlistPage from '../../pages/WatchlistPage';
+import SearchPage from '../../pages/SearchPage';
 
 const App = () => {
   useLayoutEffect(() => {
@@ -48,6 +49,9 @@ const App = () => {
                 </Route>
                 <Route exact path="/login">
                   <LoginPage />
+                </Route>
+                <Route exact path="/search">
+                  <SearchPage />
                 </Route>
                 <Route exact path="/video/:id">
                   <VideoPage />

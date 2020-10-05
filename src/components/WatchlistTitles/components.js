@@ -16,7 +16,7 @@ export const TitleCard = styled.div`
 `;
 
 export const TitleText = styled.span`
-  & :hover {
+  :hover {
     cursor: pointer;
     text-decoration: underline;
   }
@@ -29,7 +29,7 @@ export const TitlesHolder = styled.div`
   width: 80vw;
 `;
 
-export const RemoveButton = styled.div`
+export const RemoveButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,7 +43,10 @@ export const RemoveButton = styled.div`
   height: 24px;
   width: 24px;
 
-  & :hover {
+  margin: none;
+  border: none;
+
+  :hover {
     cursor: pointer;
   }
 `;

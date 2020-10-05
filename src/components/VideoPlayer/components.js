@@ -32,7 +32,7 @@ export const CardBackground = styled.div`
   margin: 560px 8px 16px 8px;
 `;
 
-export const AddButton = styled.div`
+export const AddButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +46,10 @@ export const AddButton = styled.div`
   height: 40px;
   width: 40px;
 
-  & :hover {
+  margin: none;
+  border: none;
+
+  :hover {
     cursor: pointer;
   }
 `;
