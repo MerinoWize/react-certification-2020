@@ -28,7 +28,7 @@ const WatchlistProvider = ({ children }) => {
   }, []);
 
   const addVideo = useCallback(
-    (id, title, data ) => {
+    (id, title, data) => {
       const newWatchlists = watchlist;
       newWatchlists.push({ id, title, data });
 
