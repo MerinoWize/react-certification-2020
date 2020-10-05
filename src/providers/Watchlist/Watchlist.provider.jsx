@@ -14,73 +14,45 @@ const useWatchlist = () => {
 };
 
 const WatchlistProvider = ({ children }) => {
-  const [watchlists, setWatchlists] = useState([{}]);
+  const [watchlist, setWatchlist] = useState([{}]);
   // [{
-  //   name: 'defaultList',
-  //   videos: [],
+  //   id: 'some-id',
+  //   title: 'Some Title!',
   // }]
 
   useEffect(() => {
     const lastWatchlistState = storage.get(WL_STORAGE_KEY);
     const lasWatchListStateData = JSON.parse(lastWatchlistState);
 
-    setWatchlists(lasWatchListStateData);
+    setWatchlist(lasWatchListStateData);
   }, []);
 
-  const addList = useCallback(
-    (newListName) => {
-      const newWatchlists = watchlists;
-      newWatchlists.push({
-        name: newListName,
-        videos: [],
-      });
-      setWatchlists(newWatchlists);
-      storage.set(WL_STORAGE_KEY, newWatchlists);
-    },
-    [watchlists]
-  );
-
   const addVideo = useCallback(
-    (index, id) => {
-      const newWatchlists = watchlists;
-      newWatchlists[index].videos.push(id);
+    (id, title) => {
+      const newWatchlists = watchlist;
+      newWatchlists.videos.push({ id, title });
 
-      setWatchlists(newWatchlists);
+      setWatchlist(newWatchlists);
       storage.set(WL_STORAGE_KEY, newWatchlists);
     },
-    [watchlists]
+    [watchlist]
   );
 
   const removeVideo = useCallback(
-    (index, id) => {
-      const newWatchlists = watchlists;
-      const newWatchlistsVideos = newWatchlists[index].videos;
-      const vidToRemoveIndex = newWatchlistsVideos.indexOf(id);
+    (index) => {
+      const newWatchlist = watchlist;
       if (index > -1) {
-        newWatchlistsVideos.splice(vidToRemoveIndex, 1);
+        newWatchlist.splice(index, 1);
       }
 
-      setWatchlists(newWatchlists);
-      storage.set(WL_STORAGE_KEY, newWatchlists);
+      setWatchlist(newWatchlist);
+      storage.set(WL_STORAGE_KEY, newWatchlist);
     },
-    [watchlists]
-  );
-
-  const renameList = useCallback(
-    (index, newName) => {
-      const newWatchlists = watchlists;
-      newWatchlists[index].name = newName;
-
-      setWatchlists(newWatchlists);
-      storage.set(WL_STORAGE_KEY, newWatchlists);
-    },
-    [watchlists]
+    [watchlist]
   );
 
   return (
-    <WatchlistContext.Provider
-      value={{ addList, addVideo, removeVideo, renameList, watchlists }}
-    >
+    <WatchlistContext.Provider value={{ addVideo, removeVideo, watchlist }}>
       {children}
     </WatchlistContext.Provider>
   );
