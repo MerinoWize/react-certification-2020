@@ -18,8 +18,6 @@ function CurrentVideoProvider({ children }) {
   useEffect(() => {
     const storedVideo = storage.get(CV_STORAGE_KEY);
 
-    console.log(storedVideo);
-
     setCurrentVideo(storedVideo);
   }, []);
 

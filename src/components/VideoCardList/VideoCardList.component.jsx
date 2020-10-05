@@ -9,7 +9,6 @@ const VideoCardList = ({ videos }) => {
   const history = useHistory();
 
   const handleClick = async (video) => {
-    console.log(video);
     await setVideo(video);
     const { id } = video;
     if (typeof id === 'string') {
