@@ -5,8 +5,8 @@ import './Layout.styles.css';
 function Layout({ header, children }) {
   return (
     <div className="wrapper">
-      {header}
-      <main className="container">{children}</main>
+      <div className="header-container">{header}</div>
+      <main className="content-container">{children}</main>
     </div>
   );
 }
