@@ -28,7 +28,6 @@ export const CardBackground = styled.div`
   background-color: white;
   padding: 24px;
   height: auto;
-  max-height: 750px;
   width: 750px;
   margin: 560px 8px 16px 8px;
 `;

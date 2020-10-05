@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useWatchlist } from '../../providers/Watchlist';
 import { useCurrentVideo } from '../../providers/CurrentVideo';
-import { TitleCard, TitlesHolder } from './components';
+import { TitleCard, TitlesHolder, RemoveButton, TitleText } from './components';
 
 const WatchlistTitles = () => {
   const history = useHistory();
@@ -20,17 +20,16 @@ const WatchlistTitles = () => {
     removeVideo(index);
   };
 
-  if (watchlist.length) {
-    const titles = watchlist.map((video, index) => (
-      <TitleCard onClick={(e) => goToVideo(e, video)} key={video.id}>
-        {video.title}
-      </TitleCard>
-    ));
-
-    return <TitlesHolder>{titles}</TitlesHolder>;
-  }
-
-  return <span> LOADING... </span>;
+  return (
+    <TitlesHolder>
+      {watchlist.map((video, index) => (
+        <TitleCard key={video.id}>
+          <TitleText onClick={(e) => goToVideo(e, video)}>{video.title}</TitleText>
+          <RemoveButton onClick={(e) => removeVideoFromWL(e, index)}>X</RemoveButton>
+        </TitleCard>
+      ))}
+    </TitlesHolder>
+  );
 };
 
 export default WatchlistTitles;
