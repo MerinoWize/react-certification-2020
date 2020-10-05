@@ -1,11 +1,10 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-// import { useAuth } from '../../providers/Auth';
+import { useAuth } from '../../providers/Auth';
 
-function PrivateRoute({ children, ...rest }) {
-  // const { authenticated } = useAuth();
-  const authenticated = true;
+function Private({ children, ...rest }) {
+  const { authenticated } = useAuth();
 
   return (
     <Route
@@ -15,4 +14,4 @@ function PrivateRoute({ children, ...rest }) {
   );
 }
 
-export default PrivateRoute;
+export default Private;

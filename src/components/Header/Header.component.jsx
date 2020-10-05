@@ -32,8 +32,8 @@ const Header = () => {
       </HeaderSection>
       <HeaderSection>
         {authenticated ? (
-          <Link to="/login" onClick={deAuthenticate}>
-            <HeaderButton>Logout</HeaderButton>
+          <Link to="/login">
+            <HeaderButton onClick={deAuthenticate}>Logout</HeaderButton>
           </Link>
         ) : (
           <Link to="/login">
