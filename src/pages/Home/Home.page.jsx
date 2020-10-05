@@ -1,12 +1,14 @@
 import React, { useRef } from 'react';
 import VideoCardList from '../../components/VideoCardList';
-// import './Home.styles.css';s
+import { usePopularVids } from '../../utils/hooks/useYoutube';
 
 const HomePage = () => {
   const sectionRef = useRef(null);
+  const { popularVids } = usePopularVids();
+
   return (
     <div ref={sectionRef}>
-      <VideoCardList />
+      <VideoCardList videos={popularVids} />
     </div>
   );
 };

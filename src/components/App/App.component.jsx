@@ -8,6 +8,7 @@ import Header from '../Header';
 
 import AuthProvider from '../../providers/Auth';
 import WatchlistProvider from '../../providers/Watchlist';
+import CurrentVideoContext from '../../providers/CurrentVideo';
 
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
@@ -37,27 +38,28 @@ const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Header />
         <WatchlistProvider>
-          <Layout>
-            <Switch>
-              <PrivateRoute exact path="/">
-                <HomePage />
-              </PrivateRoute>
-              <Route exact path="/login">
-                <LoginPage />
-              </Route>
-              <PrivateRoute exact path="/secret">
-                <SecretPage />
-              </PrivateRoute>
-              <PrivateRoute path="/video/:id">
-                <VideoPage />
-              </PrivateRoute>
-              <Route path="*">
-                <NotFound />
-              </Route>
-            </Switch>
-          </Layout>
+          <CurrentVideoContext>
+            <Layout header={<Header />}>
+              <Switch>
+                <PrivateRoute exact path="/">
+                  <HomePage />
+                </PrivateRoute>
+                <Route exact path="/login">
+                  <LoginPage />
+                </Route>
+                <PrivateRoute exact path="/secret">
+                  <SecretPage />
+                </PrivateRoute>
+                <PrivateRoute path="/video/:id">
+                  <VideoPage />
+                </PrivateRoute>
+                <Route path="*">
+                  <NotFound />
+                </Route>
+              </Switch>
+            </Layout>
+          </CurrentVideoContext>
         </WatchlistProvider>
       </AuthProvider>
     </BrowserRouter>

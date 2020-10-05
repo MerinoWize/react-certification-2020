@@ -27,45 +27,60 @@ const WatchlistProvider = ({ children }) => {
     setWatchlists(lasWatchListStateData);
   }, []);
 
+  const addList = useCallback(
+    (newListName) => {
+      const newWatchlists = watchlists;
+      newWatchlists.push({
+        name: newListName,
+        videos: [],
+      });
+      setWatchlists(newWatchlists);
+      storage.set(WL_STORAGE_KEY, newWatchlists);
+    },
+    [watchlists]
+  );
+
   const addVideo = useCallback(
     (index, id) => {
-      const newWhatchlists = watchlists;
-      newWhatchlists[index].videos.push(id);
+      const newWatchlists = watchlists;
+      newWatchlists[index].videos.push(id);
 
-      setWatchlists(newWhatchlists);
-      storage.set(WL_STORAGE_KEY, newWhatchlists);
+      setWatchlists(newWatchlists);
+      storage.set(WL_STORAGE_KEY, newWatchlists);
     },
     [watchlists]
   );
 
   const removeVideo = useCallback(
     (index, id) => {
-      const newWhatchlists = watchlists;
-      const newWhatchlistsVideos = newWhatchlists[index].videos;
-      const vidToRemoveIndex = newWhatchlistsVideos.indexOf(id);
+      const newWatchlists = watchlists;
+      const newWatchlistsVideos = newWatchlists[index].videos;
+      const vidToRemoveIndex = newWatchlistsVideos.indexOf(id);
       if (index > -1) {
-        newWhatchlistsVideos.splice(vidToRemoveIndex, 1);
+        newWatchlistsVideos.splice(vidToRemoveIndex, 1);
       }
 
-      setWatchlists(newWhatchlists);
-      storage.set(WL_STORAGE_KEY, newWhatchlists);
+      setWatchlists(newWatchlists);
+      storage.set(WL_STORAGE_KEY, newWatchlists);
     },
     [watchlists]
   );
 
   const renameList = useCallback(
     (index, newName) => {
-      const newWhatchlists = watchlists;
-      newWhatchlists[index].name = newName;
+      const newWatchlists = watchlists;
+      newWatchlists[index].name = newName;
 
-      setWatchlists(newWhatchlists);
-      storage.set(WL_STORAGE_KEY, newWhatchlists);
+      setWatchlists(newWatchlists);
+      storage.set(WL_STORAGE_KEY, newWatchlists);
     },
     [watchlists]
   );
 
   return (
-    <WatchlistContext.Provider value={{ addVideo, removeVideo, renameList, watchlists }}>
+    <WatchlistContext.Provider
+      value={{ addList, addVideo, removeVideo, renameList, watchlists }}
+    >
       {children}
     </WatchlistContext.Provider>
   );
