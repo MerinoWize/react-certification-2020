@@ -63,3 +63,33 @@ export const useRelatedVids = (videoId) => {
 
   return { relatedVids };
 };
+
+export const useYoutubeSearch = (searchTerm) => {
+  const [foudVids, setFoundVids] = useState([]);
+  const API_URL = `https://www.googleapis.com/youtube/v3/search`;
+
+  useEffect(() => {
+    const findRelatedVids = async () => {
+      try {
+        const response = await axios.get(API_URL, {
+          params: {
+            part: 'snippet',
+            maxResults: 5,
+            q: searchTerm,
+            key: YOUTUBE_API_KEY,
+          },
+        });
+        const responseJson = await response;
+        const videos = responseJson.data.items;
+
+        setFoundVids(videos);
+      } catch (error) {
+        console.error('YT Error: ', error);
+      }
+    };
+
+    findRelatedVids();
+  }, [searchTerm, API_URL]);
+
+  return { foudVids };
+};
