@@ -7,6 +7,8 @@ import { random } from '../../utils/fns';
 import Header from '../Header';
 
 import AuthProvider from '../../providers/Auth';
+import WatchlistProvider from '../../providers/Watchlist';
+
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
@@ -36,26 +38,27 @@ const App = () => {
     <BrowserRouter>
       <AuthProvider>
         <Header />
-        <Layout>
-          <Switch>
-            <PrivateRoute exact path="/">
-              <HomePage />
-            </PrivateRoute>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <PrivateRoute exact path="/secret">
-              <SecretPage />
-            </PrivateRoute>
-            <PrivateRoute path="/video/:id">
-              <VideoPage />
-            </PrivateRoute>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-          {/* <Fortune /> */}
-        </Layout>
+        <WatchlistProvider>
+          <Layout>
+            <Switch>
+              <PrivateRoute exact path="/">
+                <HomePage />
+              </PrivateRoute>
+              <Route exact path="/login">
+                <LoginPage />
+              </Route>
+              <PrivateRoute exact path="/secret">
+                <SecretPage />
+              </PrivateRoute>
+              <PrivateRoute path="/video/:id">
+                <VideoPage />
+              </PrivateRoute>
+              <Route path="*">
+                <NotFound />
+              </Route>
+            </Switch>
+          </Layout>
+        </WatchlistProvider>
       </AuthProvider>
     </BrowserRouter>
   );
