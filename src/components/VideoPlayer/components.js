@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 
 export const VideoContainer = styled.div`
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
+
+export const VideoWindow = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,9 +17,6 @@ export const VideoContainer = styled.div`
 `;
 
 export const Videoframe = styled.iframe`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
 `;
@@ -24,7 +28,26 @@ export const CardBackground = styled.div`
   background-color: white;
   padding: 24px;
   height: auto;
-  width: auto;
+  max-height: 750px;
+  width: 750px;
+  margin: 560px 8px 16px 8px;
+`;
 
-  margin: 8px;
+export const AddButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b3b3b3;
+  padding: 8px;
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  font-weight: bolder;
+  text-decoration: none;
+  height: 40px;
+  width: 40px;
+
+  & :hover {
+    cursor: pointer;
+  }
 `;

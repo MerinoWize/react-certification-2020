@@ -16,9 +16,7 @@ const VideoPage = ({ match }) => {
   return (
     <Container ref={sectionRef}>
       <VideoPlayer videoId={id} />
-      <div>
-        <VideoCardList videos={relatedVids} />
-      </div>
+      <VideoCardList videos={relatedVids} />
     </Container>
   );
 };

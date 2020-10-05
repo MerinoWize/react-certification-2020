@@ -9,8 +9,14 @@ const VideoCardList = ({ videos }) => {
   const history = useHistory();
 
   const handleClick = async (video) => {
+    console.log(video);
     await setVideo(video);
-    history.push(`/video/${video.id}`);
+    const { id } = video;
+    if (typeof id === 'string') {
+      history.push(`/video/${video.id}`);
+    } else {
+      history.push(`/video/${video.id.videoId}`);
+    }
   };
 
   if (videos.length) {

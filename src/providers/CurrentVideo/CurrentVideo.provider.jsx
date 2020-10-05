@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
+import { storage } from '../../utils/storage';
+import { CV_STORAGE_KEY } from '../../utils/constants';
 
 const CurrentVideoContext = React.createContext(null);
 
@@ -14,11 +16,16 @@ function CurrentVideoProvider({ children }) {
   const [currentVideo, setCurrentVideo] = useState({});
 
   useEffect(() => {
-    setCurrentVideo({});
+    const storedVideo = storage.get(CV_STORAGE_KEY);
+
+    console.log(storedVideo);
+
+    setCurrentVideo(storedVideo);
   }, []);
 
   const setVideo = useCallback((video) => {
     setCurrentVideo(video);
+    storage.set(CV_STORAGE_KEY, video);
   }, []);
 
   return (
