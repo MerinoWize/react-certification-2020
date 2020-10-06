@@ -15,7 +15,6 @@ const SearchPage = () => {
   const [showVids, setShowVids] = useState(false);
 
   const searchVids = (event) => {
-    setShowVids(false);
     event.preventDefault();
     setSearchTerm(searchInput);
     setShowVids(true);

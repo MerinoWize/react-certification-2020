@@ -4,7 +4,7 @@ import axios from 'axios';
 // const YOUTUBE_API_KEY_V1 = 'AIzaSyAUu9MIWbw2vZy5_p-mBsTF-mPOH1VPHSU';
 const YOUTUBE_API_KEY_V2 = 'AIzaSyDi9ZuwzXhuRAChIGImPHmj_ac79EDBnEA';
 
-const timeout = 30000;
+const timeout = 300;
 
 export const usePopularVids = () => {
   const [popularVids, setPopularVids] = useState([]);
@@ -84,6 +84,7 @@ export const useYoutubeSearch = (searchTerm) => {
               part: 'snippet',
               maxResults: 15,
               q: searchTerm,
+              type: 'video',
               key: YOUTUBE_API_KEY_V2,
             },
           });
