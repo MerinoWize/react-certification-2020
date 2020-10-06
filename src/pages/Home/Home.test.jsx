@@ -39,8 +39,6 @@ describe('Home', () => {
       </CurrentVideoContext>
     );
 
-    console.log(wrapper);
-
     expect(wrapper.find('div').contains('wizeline')).toEqual(true);
   });
 });
